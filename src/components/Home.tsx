@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import ImagesList from "./ImageList";
 
 const Home = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <ImagesList />
+    </Container>
+  );
 };
 
 export default Home;
