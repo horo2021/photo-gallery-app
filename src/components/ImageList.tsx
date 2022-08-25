@@ -5,7 +5,7 @@ import { fetchImages } from "../services/fetchService";
 import SingleImage from "./SingleImage";
 
 import Loader from "./Loader";
-
+import FullImage from "./FullImage";
 import { Image } from "../models/image";
 
 const ImagesList = () => {
@@ -40,6 +40,14 @@ const ImagesList = () => {
   const onCloseFullImage = () => setSelectedImage(null);
   return (
     <Container>
+      {selectedImage && (
+        <FullImage
+          images={imagesList}
+          selectedImageId={selectedImage.id}
+          onClose={onCloseFullImage}
+        />
+      )}
+
       <InfiniteScroll
         dataLength={imagesList.length}
         next={fetch}
