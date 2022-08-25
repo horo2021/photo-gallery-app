@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import styled from "styled-components";
 import { fetchImages } from "../services/fetchService";
+import SingleImage from "./SingleImage";
 
 import Loader from "./Loader";
 
@@ -45,7 +46,15 @@ const ImagesList = () => {
         hasMore={imageLimiter()}
         loader={<Loader />}
       >
-        <Content></Content>
+        <Content>
+          {imagesList.map((image) => (
+            <SingleImage
+              key={image.id}
+              image={image}
+              onImagePress={onImagePress}
+            />
+          ))}
+        </Content>
       </InfiniteScroll>
     </Container>
   );
