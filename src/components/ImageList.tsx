@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+// InfiniteScroll is a third party library to manage the lazy loading strategy
 import InfiniteScroll from "react-infinite-scroll-component";
 import styled from "styled-components";
 import { fetchImages } from "../services/fetchService";
@@ -7,9 +8,10 @@ import SingleImage from "./SingleImage";
 import Loader from "./Loader";
 import FullImage from "./FullImage";
 import { Image } from "../models/image";
-
+// the iamge list component is responsible for rendering a list of images on the home component
 const ImagesList = () => {
   const [imagesList, setImagesList] = useState<Image[]>([]);
+  // selected image state is giving an id to the exact image that  was clicked
   const [selectedImage, setSelectedImage] = useState<Image | null>(null);
 
   const fetch = useCallback(async () => {
@@ -30,6 +32,7 @@ const ImagesList = () => {
     },
     [imagesList]
   );
+  // image limiter function was added to prevent the user from abusing api and avoiding too requests
   const imageLimiter = useCallback(() => {
     if (imagesList.length > 40) {
       return false;
@@ -37,6 +40,7 @@ const ImagesList = () => {
       return true;
     }
   }, [imagesList]);
+  // this function is called to handle the close btn popup
   const onCloseFullImage = () => setSelectedImage(null);
   return (
     <Container>

@@ -6,6 +6,7 @@ export interface SingleImageProps {
   image: Image;
   onImagePress: (id: string) => void;
 }
+// SingleImage is responsible for showing the image in the list and handling the id
 const SingleImage = ({
   image: { id, urls },
   onImagePress,

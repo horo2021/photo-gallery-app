@@ -1,3 +1,4 @@
+// this service was created to handle the fetch request from the api
 import axios from "axios";
 export const fetchImages = async () => {
   const apiRoot = "https://api.unsplash.com";
